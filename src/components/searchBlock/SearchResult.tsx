@@ -15,8 +15,5 @@ export const SearchResult: FC = (): ReactElement => (
         <Card />
       </li>
     </ul>
-    <div className='wrapper'>
-      <button className='btn-view-more'>Searched: 15 items. View All</button>
-    </div>
   </div>
 );
