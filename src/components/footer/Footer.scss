@@ -1,6 +1,6 @@
 .footer {
-  color: rgba(255,193,155, .7);
- background-color: #000;
+  color: rgba(255, 193, 155, 0.7);
+  background-color: #000;
 
   &__container {
     padding: 20px 0;
@@ -18,7 +18,7 @@
     transition: all 1s;
 
     &:hover {
-      color: rgba(255,163,120, .7) !important;
+      color: rgba(255, 163, 120, 0.7) !important;
     }
   }
 }
