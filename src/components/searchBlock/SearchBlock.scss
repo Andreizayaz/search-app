@@ -33,9 +33,9 @@ input#search {
   border-radius: 10px;
 
   &:focus {
-  box-shadow: none;
-  border-color: rgb(206, 212, 218);
-}
+    box-shadow: none;
+    border-color: rgb(206, 212, 218);
+  }
 
   &::placeholder {
     position: relative;
