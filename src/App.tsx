@@ -1,11 +1,13 @@
 import { FC, ReactElement } from 'react';
 
-import { Header, Main, Footer } from './components';
+import { Header, Main, SearchBlock, Footer } from './components';
 
 export const App: FC = (): ReactElement => (
   <>
     <Header />
-    <Main />
+    <Main>
+      <SearchBlock />
+    </Main>
     <Footer />
   </>
 );
