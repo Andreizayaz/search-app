@@ -19,8 +19,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --watchAll=false",
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "lint-fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
+    "format-check": "prettier --check ./**/*.{js,jsx,ts,tsx,css,scss,md,json} --config ./.prettierrc",
+    "format-fix": "prettier --write ./**/*.{js,jsx,ts,tsx,css,scss,md,json} --config ./.prettierrc",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +44,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "2.7.1",
+    "husky": "^8.0.0"
   }
 }
