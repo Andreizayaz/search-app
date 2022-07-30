@@ -1,3 +1,13 @@
 import { FC, ReactElement } from 'react';
 
-export const App: FC = (): ReactElement => <div>Search App</div>;
+import { Header, Main, SearchBlock, Footer } from './components';
+
+export const App: FC = (): ReactElement => (
+  <>
+    <Header />
+    <Main>
+      <SearchBlock />
+    </Main>
+    <Footer />
+  </>
+);

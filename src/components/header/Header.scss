@@ -1,0 +1,28 @@
+.header {
+  background-color: #7fa8ff;
+}
+
+.logo {
+  height: 50px;
+  width: 50px;
+  background-image: url('./Logo.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: all 1s;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.navbar {
+  &__link {
+    color: #ffc19b !important;
+    font-size: 25px !important;
+    font-weight: 700 !important;
+    transition: all 1s !important;
+    &:hover {
+      color: #ffa378 !important;
+    }
+  }
+}
