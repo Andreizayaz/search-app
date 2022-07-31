@@ -10,7 +10,7 @@
 
   &__live-result-list {
     max-height: 300px;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   &__result-list {
@@ -87,4 +87,55 @@ button.btn-view-more {
   border: none;
   padding: 10px;
   background: transparent;
+}
+
+.container.search__result-list {
+  margin-top: 50px;
+  padding: 0;
+}
+
+.container.search__result-list {
+  background-color: rgb(255, 255, 255);
+}
+
+container.search__result-list {
+  background-color: rgb(255, 255, 255);
+}
+
+.buttons-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100px;
+  margin: 0 auto;
+}
+
+button.buttons-group__button {
+  border: none;
+}
+
+i.bi.bi-arrow-left-circle-fill {
+  font-size: 30px;
+}
+
+i.bi.bi-arrow-right-circle-fill {
+  font-size: 30px;
+}
+
+button.buttons-group__button {
+  background: transparent;
+  outline: none;
+}
+
+p.no-search {
+  text-align: center;
+}
+
+span.card-text__border {
+  border-right: 1px solid black;
+  height: 15px;
+}
+
+span.card-text__border {
+  margin: 0 10px;
 }

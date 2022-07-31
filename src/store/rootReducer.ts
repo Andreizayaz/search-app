@@ -1,3 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-export const rootReducer = combineReducers({});
+import { setSearchStarShipReducer } from './searchStartShip';
+
+export const rootReducer = combineReducers({
+  searchStarShip: setSearchStarShipReducer
+});
