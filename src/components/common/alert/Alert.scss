@@ -2,10 +2,10 @@
   position: fixed;
   top: 10px;
   left: 50%;
-  transform: translateX(-50%);
   min-width: 500px;
+  transform: translateX(-50%);
 }
 
-.alert.alert-secondary {
+.alert-secondary {
   text-align: center;
 }

@@ -12,10 +12,10 @@ import { selectAlert } from 'src/store/alert';
 import { selectLoader } from 'src/store/loader';
 import { selectMistakeText, setMistakeText } from 'src/store/mistakeText';
 import {
-  selectSearchStarShipResult,
-  fetchSearchStarShip,
-  setSearchStarShip,
-  fetchPrevOrNextPageSearchStarShip
+  selectStarShip,
+  fetchStarShip,
+  setStarShip,
+  fetchPage
 } from 'src/store/searchStartShip';
 
 import { SearchBlock } from './SearchBlock';
@@ -24,11 +24,10 @@ import './SearchBlock.scss';
 
 const SearchBlockContainer: FC = (): ReactElement => {
   const inputRef = useRef<HTMLInputElement>();
-  const [isVisibleDropDownSearchResult, setIsVisibleDropDownSearchResult] =
-    useState(false);
-  const [isVisibleSearchList, setIsVisibleSearchList] = useState(false);
+  const [isDropDownSearch, setIsDropDownSearch] = useState(false);
+  const [isSearchList, setIsSearchList] = useState(false);
 
-  const { next, previous, results } = useSelector(selectSearchStarShipResult);
+  const { next, previous, results } = useSelector(selectStarShip);
   const isLoader = useSelector(selectLoader);
   const isAlert = useSelector(selectAlert);
   const isMistakeText = useSelector(selectMistakeText);
@@ -37,42 +36,43 @@ const SearchBlockContainer: FC = (): ReactElement => {
   const getSearchResult = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     isMistakeText && dispatch(setMistakeText(false));
-    !isVisibleDropDownSearchResult && setIsVisibleDropDownSearchResult(true);
+    !isDropDownSearch && setIsDropDownSearch(true);
     if (!value.trim().length) {
       dispatch(
-        setSearchStarShip({ count: 0, next: null, previous: null, results: [] })
+        setStarShip({ count: 0, next: null, previous: null, results: [] })
       );
       return;
     }
-    dispatch(fetchSearchStarShip(value));
+    dispatch(fetchStarShip(value));
   };
 
-  const getPreviousOrNextPage = (url: string | null) => {
+  const getPage = (url: string | null) => {
     if (url) {
-      dispatch(fetchPrevOrNextPageSearchStarShip(url));
+      dispatch(fetchPage(url));
     }
   };
 
-  const handleSubmitForm = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (inputRef.current) {
-      inputRef.current.value = '';
+    const input = inputRef.current;
+    if (input) {
+      input.value = '';
     }
-    setIsVisibleDropDownSearchResult(false);
-    setIsVisibleSearchList(true);
+    setIsDropDownSearch(false);
+    setIsSearchList(true);
   };
 
   return (
     <SearchBlock
       inputRef={inputRef as MutableRefObject<HTMLInputElement>}
       results={results}
-      clickHandler={getPreviousOrNextPage}
+      clickHandler={getPage}
       changeInputHandler={getSearchResult}
-      handleForm={handleSubmitForm}
+      handleForm={handleSubmit}
       next={next}
       previous={previous}
-      isVisibleDropDownSearchResult={isVisibleDropDownSearchResult}
-      isVisibleSearchList={isVisibleSearchList}
+      isDropDownSearch={isDropDownSearch}
+      isSearchList={isSearchList}
       isLoader={isLoader}
       isAlert={isAlert}
     />

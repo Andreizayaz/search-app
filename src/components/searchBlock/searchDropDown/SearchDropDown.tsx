@@ -8,7 +8,7 @@ import {
   SearchMistakeText
 } from 'src/components/common';
 
-type SearchResultPropsTypes = {
+type SearchDropDownPropsTypes = {
   mistakeText: string;
   isMistakeText: boolean;
   next: string | null;
@@ -17,7 +17,7 @@ type SearchResultPropsTypes = {
   clickHandler: (url: string | null) => void;
 };
 
-export const SearchResultDropDown: FC<SearchResultPropsTypes> = ({
+export const SearchDropDown: FC<SearchDropDownPropsTypes> = ({
   mistakeText,
   isMistakeText,
   next,

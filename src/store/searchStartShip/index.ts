@@ -1,9 +1,9 @@
 export {
-  setSearchStarShipReducer,
-  setSearchStarShip,
-  fetchSearchStarShip,
-  fetchPrevOrNextPageSearchStarShip
+  setStarShipReducer,
+  setStarShip,
+  fetchStarShip,
+  fetchPage
 } from './reducer';
-export { searchStarShipSaga, searchPrevOrNextPageStarShipSaga } from './sagas';
-export { selectSearchStarShipResult } from './selectors';
-export type { searchStarShipResultType, resultType } from './types';
+export { getStarShipSaga, getPageStarShipSaga } from './sagas';
+export { selectStarShip } from './selectors';
+export type { starShipType, resultType } from './types';

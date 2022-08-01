@@ -1,0 +1,44 @@
+.input-group {
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.search-autocomplete {
+  position: relative;
+  width: 89%;
+}
+
+i.bi.bi-search {
+  position: absolute;
+  top: 50%;
+  display: block;
+  color: #000;
+  font-weight: 700;
+  opacity: 0.7;
+  transform: translate(60%, -50%);
+}
+
+input#search {
+  padding: 20px 30px;
+  border-radius: 10px;
+
+  &:focus {
+    box-shadow: none;
+    border-color: rgb(206, 212, 218);
+  }
+
+  &::placeholder {
+    position: relative;
+    left: 10px;
+  }
+}
+
+button.btn.btn-primary {
+  background: #000;
+  border-radius: 10px !important;
+  transition: all 1s;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}

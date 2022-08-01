@@ -8,10 +8,10 @@ import {
 
 import { resultType } from 'src/store/searchStartShip';
 
-import { NETWORK_ERROR_TEXT } from 'src/constants';
+import { NETWORK_ERROR_TEXT, LOADER_TEXT } from 'src/constants';
 
 import { SearchForm } from './searchForm';
-import { SearchResultDropDown } from './searchResultDropDown';
+import { SearchDropDown } from './searchDropDown';
 import { SearchResultList } from './searchResultList';
 import { Loader, Alert } from 'src/components/common';
 
@@ -19,8 +19,8 @@ type SearchBlockPropsTypes = {
   next: string | null;
   previous: string | null;
   results: resultType[];
-  isVisibleDropDownSearchResult: boolean;
-  isVisibleSearchList: boolean;
+  isDropDownSearch: boolean;
+  isSearchList: boolean;
   isLoader: boolean;
   isAlert: boolean;
   inputRef: MutableRefObject<HTMLInputElement>;
@@ -33,8 +33,8 @@ export const SearchBlock: FC<SearchBlockPropsTypes> = ({
   next,
   previous,
   results,
-  isVisibleDropDownSearchResult,
-  isVisibleSearchList,
+  isDropDownSearch,
+  isSearchList,
   isLoader,
   isAlert,
   inputRef,
@@ -50,14 +50,14 @@ export const SearchBlock: FC<SearchBlockPropsTypes> = ({
         changeInputHandler={changeInputHandler}
         handleForm={handleForm}
       />
-      {isLoader && <Loader />}
-      {isVisibleDropDownSearchResult && (
+      {isLoader && <Loader text={LOADER_TEXT} />}
+      {isDropDownSearch && (
         <div className='search__live-result-list'>
-          <SearchResultDropDown clickHandler={clickHandler} />
+          <SearchDropDown clickHandler={clickHandler} />
         </div>
       )}
     </div>
-    {isVisibleSearchList && !!results.length && (
+    {isSearchList && !!results.length && (
       <div className='container search__result-list'>
         <SearchResultList
           next={next}

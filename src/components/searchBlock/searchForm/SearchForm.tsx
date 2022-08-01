@@ -6,7 +6,9 @@ import {
   ReactElement
 } from 'react';
 
-import { SEARCH_LABEL } from 'src/constants';
+import { SEARCH_TEXT } from 'src/constants';
+
+import './SearchForm.scss';
 
 type SearchPropsTypes = {
   inputRef: MutableRefObject<HTMLInputElement>;
@@ -21,7 +23,10 @@ export const SearchForm: FC<SearchPropsTypes> = ({
 }): ReactElement => (
   <form onSubmit={handleForm}>
     <div className='input-group'>
-      <div id='search-autocomplete' className='form-outline'>
+      <div
+        id='search-autocomplete'
+        className='form-outline search-autocomplete'
+      >
         <i className='bi bi-search'></i>
         <input
           ref={inputRef}
@@ -29,11 +34,11 @@ export const SearchForm: FC<SearchPropsTypes> = ({
           type='search'
           id='search'
           className='form-control'
-          placeholder='SearchForm...'
+          placeholder={`${SEARCH_TEXT}...`}
         />
       </div>
       <button type='submit' className='btn btn-primary'>
-        {SEARCH_LABEL}
+        {SEARCH_TEXT}
       </button>
     </div>
   </form>

@@ -4,11 +4,11 @@ import { resultType } from 'src/store/searchStartShip';
 
 import { Card } from '../card';
 
-type SearchResultPropsTypes = {
+type SearchDropDownPropsTypes = {
   results: resultType[];
 };
 
-export const SearchResult: FC<SearchResultPropsTypes> = ({
+export const SearchResult: FC<SearchDropDownPropsTypes> = ({
   results
 }): ReactElement => (
   <div className='result-container'>

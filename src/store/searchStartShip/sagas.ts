@@ -1,21 +1,14 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
-import {
-  getStarShipSearchResult,
-  getPrevOrNextPageStarShipSearch
-} from 'src/api';
+import { getStarShip, getStarShipByPage } from 'src/api';
 
-import {
-  setSearchStarShip,
-  fetchSearchStarShip,
-  fetchPrevOrNextPageSearchStarShip
-} from './reducer';
+import { setStarShip, fetchStarShip, fetchPage } from './reducer';
 
 import { setLoader } from '../loader';
-
-import { searchStarShipResultType, ActionType } from './types';
 import { setAlert } from '../alert';
 import { setMistakeText } from '../mistakeText';
+
+import { starShipType, ActionType } from './types';
 
 function* setAlertAndLoaderErrorState() {
   yield put(setLoader(false));
@@ -28,23 +21,23 @@ function* setAlertAndLoaderErrorState() {
   console.log('error');
 }
 
-function* fetchSearchStarShipData(fetchSearchStarShip: ActionType<string>) {
+function* fetchSearchStarShipData(fetchStarShip: ActionType<string>) {
   try {
     yield put(setLoader(true));
-    const searchStarShipResult: searchStarShipResultType = yield call(() =>
-      getStarShipSearchResult(fetchSearchStarShip.payload)
+    const starShip: starShipType = yield call(() =>
+      getStarShip(fetchStarShip.payload)
     );
 
-    if (!searchStarShipResult) {
+    if (!starShip) {
       setAlertAndLoaderErrorState();
       return;
     }
 
-    if (!searchStarShipResult.results.length) {
+    if (!starShip.results.length) {
       yield put(setMistakeText(true));
     }
 
-    yield put(setSearchStarShip(searchStarShipResult));
+    yield put(setStarShip(starShip));
     yield put(setLoader(false));
   } catch (error: Error | any) {
     setAlertAndLoaderErrorState();
@@ -52,16 +45,11 @@ function* fetchSearchStarShipData(fetchSearchStarShip: ActionType<string>) {
   }
 }
 
-function* fetchPrevOrNextPageSearchStarShipData(
-  fetchPrevOrNextPageSearchStarShip: ActionType<string>
-) {
+function* fetchStarShipByPage(fetchPage: ActionType<string>) {
   try {
     yield put(setLoader(true));
-    const prevOrNextPageStarShipResult: searchStarShipResultType = yield call(
-      () =>
-        getPrevOrNextPageStarShipSearch(
-          fetchPrevOrNextPageSearchStarShip.payload
-        )
+    const prevOrNextPageStarShipResult: starShipType = yield call(() =>
+      getStarShipByPage(fetchPage.payload)
     );
 
     if (!prevOrNextPageStarShipResult) {
@@ -69,7 +57,7 @@ function* fetchPrevOrNextPageSearchStarShipData(
       return;
     }
 
-    yield put(setSearchStarShip(prevOrNextPageStarShipResult));
+    yield put(setStarShip(prevOrNextPageStarShipResult));
     yield put(setLoader(false));
   } catch (error: Error | any) {
     setAlertAndLoaderErrorState();
@@ -77,13 +65,10 @@ function* fetchPrevOrNextPageSearchStarShipData(
   }
 }
 
-export function* searchStarShipSaga(): Generator {
-  yield takeLatest(fetchSearchStarShip.type, fetchSearchStarShipData);
+export function* getStarShipSaga(): Generator {
+  yield takeLatest(fetchStarShip.type, fetchSearchStarShipData);
 }
 
-export function* searchPrevOrNextPageStarShipSaga(): Generator {
-  yield takeLatest(
-    fetchPrevOrNextPageSearchStarShip.type,
-    fetchPrevOrNextPageSearchStarShipData
-  );
+export function* getPageStarShipSaga(): Generator {
+  yield takeLatest(fetchPage.type, fetchStarShipByPage);
 }

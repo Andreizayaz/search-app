@@ -1,4 +1,1 @@
-export {
-  getStarShipSearchResult,
-  getPrevOrNextPageStarShipSearch
-} from './api';
+export { getStarShip, getStarShipByPage } from './api';

@@ -1,11 +1,13 @@
 import { FC, ReactElement } from 'react';
 import { resultType } from 'src/store/searchStartShip';
 
-type SearchResultPropsTypes = {
+import './Card.scss';
+
+type CardPropsTypes = {
   result: resultType;
 };
 
-export const Card: FC<SearchResultPropsTypes> = ({ result }): ReactElement => (
+export const Card: FC<CardPropsTypes> = ({ result }): ReactElement => (
   <div className='card w-100'>
     <div className='card-body'>
       <h5 className='card-title'>{result.name}</h5>

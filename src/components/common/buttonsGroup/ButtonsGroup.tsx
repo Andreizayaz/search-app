@@ -1,5 +1,7 @@
 import { FC, ReactElement } from 'react';
 
+import './ButtonsGroup.scss';
+
 type ButtonsGroupPropsTypes = {
   next: string | null;
   previous: string | null;
@@ -17,15 +19,15 @@ export const ButtonsGroup: FC<ButtonsGroupPropsTypes> = ({
     <div className='buttons-group'>
       <button
         className='buttons-group__button'
-        disabled={isDisabled(previous)}
         onClick={() => clickHandler(previous)}
+        disabled={isDisabled(previous)}
       >
         <i className='bi bi-arrow-left-circle-fill'></i>
       </button>
       <button
         className='buttons-group__button'
-        disabled={isDisabled(next)}
         onClick={() => clickHandler(next)}
+        disabled={isDisabled(next)}
       >
         <i className='bi bi-arrow-right-circle-fill'></i>
       </button>

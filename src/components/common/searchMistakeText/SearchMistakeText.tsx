@@ -1,5 +1,7 @@
 import { FC, ReactElement } from 'react';
 
+import './SearchMistakeText.scss';
+
 type SearchMistakeTextPropsTypes = {
   text: string;
 };

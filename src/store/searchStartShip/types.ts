@@ -1,4 +1,4 @@
-export type searchStarShipResultType = {
+export type starShipType = {
   count: number;
   next: string | null;
   previous: string | null;

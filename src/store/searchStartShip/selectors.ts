@@ -1,6 +1,5 @@
 import { RootStateType } from '../index';
-import { searchStarShipResultType } from './types';
+import { starShipType } from './types';
 
-export const selectSearchStarShipResult = (
-  state: RootStateType
-): searchStarShipResultType => state.searchStarShip.searchStarShipResult;
+export const selectStarShip = (state: RootStateType): starShipType =>
+  state.starShip.starShip;

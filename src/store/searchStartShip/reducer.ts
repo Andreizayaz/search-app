@@ -1,13 +1,13 @@
 import { createSlice, createAction, PayloadAction } from '@reduxjs/toolkit';
 
-import { searchStarShipResultType } from './types';
+import { starShipType } from './types';
 
 type initialStateType = {
-  searchStarShipResult: searchStarShipResultType;
+  starShip: starShipType;
 };
 
 const initialState: initialStateType = {
-  searchStarShipResult: {
+  starShip: {
     count: 0,
     next: null,
     previous: null,
@@ -16,21 +16,17 @@ const initialState: initialStateType = {
 };
 
 const slice = createSlice({
-  name: 'searchStarShip',
+  name: 'starShip',
   initialState,
   reducers: {
-    setSearchStarShip: (
-      state,
-      action: PayloadAction<searchStarShipResultType>
-    ) => {
-      state.searchStarShipResult = action.payload;
+    setStarShip: (state, action: PayloadAction<starShipType>) => {
+      state.starShip = action.payload;
     }
   }
 });
 
-export const fetchSearchStarShip = createAction<string>('get/starship');
-export const fetchPrevOrNextPageSearchStarShip =
-  createAction<string>('get/starshipByPage');
+export const fetchStarShip = createAction<string>('get/starship');
+export const fetchPage = createAction<string>('get/starshipByPage');
 
-export const { setSearchStarShip } = slice.actions;
-export const setSearchStarShipReducer = slice.reducer;
+export const { setStarShip } = slice.actions;
+export const setStarShipReducer = slice.reducer;

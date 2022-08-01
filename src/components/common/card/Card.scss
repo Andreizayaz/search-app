@@ -1,0 +1,13 @@
+.card.w-100 {
+  border: none;
+}
+
+.card-text {
+  opacity: 0.5;
+
+  &__border {
+    margin: 0 10px;
+    height: 15px;
+    border-right: 1px solid black;
+  }
+}

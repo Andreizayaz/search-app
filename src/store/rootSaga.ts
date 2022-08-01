@@ -1,10 +1,7 @@
 import { all } from 'redux-saga/effects';
 
-import {
-  searchStarShipSaga,
-  searchPrevOrNextPageStarShipSaga
-} from './searchStartShip';
+import { getStarShipSaga, getPageStarShipSaga } from './searchStartShip';
 
 export default function* rootSaga(): Generator {
-  yield all([searchStarShipSaga(), searchPrevOrNextPageStarShipSaga()]);
+  yield all([getStarShipSaga(), getPageStarShipSaga()]);
 }
