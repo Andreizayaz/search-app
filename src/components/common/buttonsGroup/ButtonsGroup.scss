@@ -1,0 +1,21 @@
+.buttons-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 100px;
+}
+
+button.buttons-group__button {
+  border: none;
+}
+
+i.bi.bi-arrow-left-circle-fill,
+i.bi.bi-arrow-right-circle-fill {
+  font-size: 30px;
+}
+
+button.buttons-group__button {
+  background: transparent;
+  outline: none;
+}

@@ -1,6 +1,6 @@
 .footer {
-  color: #ffc19b;
-  background-color: #7fa8ff;
+  color: rgba(255, 193, 155, 0.7);
+  background-color: #000;
 
   &__container {
     padding: 20px 0;
@@ -10,6 +10,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 500px) {
+      flex-direction: column;
+      row-gap: 20px;
+    }
   }
 }
 
@@ -18,7 +23,7 @@
     transition: all 1s;
 
     &:hover {
-      color: #ffa378 !important;
+      color: rgba(255, 163, 120, 0.7) !important;
     }
   }
 }

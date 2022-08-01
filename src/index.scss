@@ -21,6 +21,16 @@ body {
 .container {
   margin: 0 auto;
   width: 80%;
+
+  @media (max-width: 980px) {
+    width: 90%;
+    max-width: 90%;
+  }
+
+  @media (max-width: 500px) {
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
 .root {

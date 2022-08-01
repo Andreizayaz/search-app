@@ -1,5 +1,5 @@
 .header {
-  background-color: #7fa8ff;
+  background-color: #000;
 }
 
 .logo {
@@ -17,12 +17,17 @@
 
 .navbar {
   &__link {
-    color: #ffc19b !important;
+    color: rgba(255, 193, 155, 0.7) !important;
     font-size: 25px !important;
     font-weight: 700 !important;
     transition: all 1s !important;
+
     &:hover {
-      color: #ffa378 !important;
+      color: rgba(255, 163, 120, 0.7) !important;
     }
   }
+}
+
+.navbar-toggler {
+  background-color: rgba(255, 193, 155, 0.7) !important;
 }
