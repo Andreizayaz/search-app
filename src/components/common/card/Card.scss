@@ -8,12 +8,30 @@
   justify-content: space-between;
   flex-flow: row wrap !important;
 
+  @media (max-width: 700px) {
+    flex-direction: column !important;
+    background: transparent !important;
+  }
+
   &-title {
     font-size: 16px;
+
+    @media (max-width: 700px) {
+      text-align: center;
+    }
   }
 
   &-text {
     font-size: 12px;
+
+    @media (max-width: 500px) {
+      display: flex;
+      flex-direction: column;
+
+      & span {
+        text-align: center;
+      }
+    }
   }
 
   &__img-wrapper {
@@ -40,5 +58,10 @@
     margin: 0 10px;
     height: 15px;
     border-right: 1px solid black;
+
+    @media (max-width: 500px) {
+      border: none;
+      border-bottom: 1px solid rgba(0,0,0, 0.3);
+    }
   }
 }

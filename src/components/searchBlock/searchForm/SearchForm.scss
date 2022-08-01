@@ -1,11 +1,21 @@
 .input-group {
   justify-content: space-between;
   margin-bottom: 20px;
+
+  @media (max-width:980px) {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
 }
 
 .search-autocomplete {
   position: relative;
   width: 89%;
+
+  @media (max-width:980px) {
+    margin: 0 auto;
+  }
 }
 
 i.bi.bi-search {
@@ -40,5 +50,10 @@ button.btn.btn-primary {
 
   &:hover {
     transform: scale(1.2);
+  }
+
+  @media (max-width:980px) {
+    margin: 0 auto !important;
+    width:100px;
   }
 }

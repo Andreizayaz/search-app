@@ -2,10 +2,22 @@
   padding: 20px;
   width: 100%;
 
+  @media (max-width: 600px) {
+    padding: 10px;
+  }
+
+  @media (max-width: 500px) {
+    padding: 0;
+  }
+
   &__container {
     padding: 20px;
     background-color: white;
     border-radius: 20px;
+
+    @media (max-width: 500px) {
+    border-radius: 0;
+  }
   }
 
   &__live-result-list {
@@ -26,6 +38,18 @@
   }
 }
 
+.result-container{
+  @media (max-width:700px) {
+    padding: 10px 0;
+  }
+}
+
 li.list-group-item {
   border: none;
+
+  @media (max-width:700px) {
+    margin-bottom: 10px;
+    background-color: rgba(255, 193, 155, 0.3) !important;
+    border-radius: 10px;
+  }
 }
