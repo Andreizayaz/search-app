@@ -1,0 +1,11 @@
+.alert-wrapper {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 500px;
+}
+
+.alert.alert-secondary {
+  text-align: center;
+}

@@ -8,6 +8,9 @@ import {
   useState
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectAlert } from 'src/store/alert';
+import { selectLoader } from 'src/store/loader';
+import { selectMistakeText, setMistakeText } from 'src/store/mistakeText';
 import {
   selectSearchStarShipResult,
   fetchSearchStarShip,
@@ -24,11 +27,16 @@ const SearchBlockContainer: FC = (): ReactElement => {
   const [isVisibleDropDownSearchResult, setIsVisibleDropDownSearchResult] =
     useState(false);
   const [isVisibleSearchList, setIsVisibleSearchList] = useState(false);
+
   const { next, previous, results } = useSelector(selectSearchStarShipResult);
+  const isLoader = useSelector(selectLoader);
+  const isAlert = useSelector(selectAlert);
+  const isMistakeText = useSelector(selectMistakeText);
   const dispatch = useDispatch();
 
   const getSearchResult = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
+    isMistakeText && dispatch(setMistakeText(false));
     !isVisibleDropDownSearchResult && setIsVisibleDropDownSearchResult(true);
     if (!value.trim().length) {
       dispatch(
@@ -65,6 +73,8 @@ const SearchBlockContainer: FC = (): ReactElement => {
       previous={previous}
       isVisibleDropDownSearchResult={isVisibleDropDownSearchResult}
       isVisibleSearchList={isVisibleSearchList}
+      isLoader={isLoader}
+      isAlert={isAlert}
     />
   );
 };

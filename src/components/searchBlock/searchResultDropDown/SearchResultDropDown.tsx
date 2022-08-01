@@ -2,10 +2,15 @@ import { FC, ReactElement } from 'react';
 
 import { resultType } from 'src/store/searchStartShip';
 
-import { SearchResult } from 'src/components/common';
-import { ButtonsGroup } from 'src/components/common';
+import {
+  SearchResult,
+  ButtonsGroup,
+  SearchMistakeText
+} from 'src/components/common';
 
 type SearchResultPropsTypes = {
+  mistakeText: string;
+  isMistakeText: boolean;
   next: string | null;
   previous: string | null;
   results: resultType[];
@@ -13,17 +18,15 @@ type SearchResultPropsTypes = {
 };
 
 export const SearchResultDropDown: FC<SearchResultPropsTypes> = ({
+  mistakeText,
+  isMistakeText,
   next,
   previous,
   results,
   clickHandler
 }): ReactElement => (
   <div className='result-container'>
-    {!results.length && (
-      <p className='no-search'>
-        No search result. Try input correct name or model
-      </p>
-    )}
+    {isMistakeText && <SearchMistakeText text={mistakeText} />}
     {!!results.length && <SearchResult results={results} />}
     {(next || previous) && (
       <ButtonsGroup
