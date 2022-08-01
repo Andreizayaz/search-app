@@ -24,6 +24,8 @@ export type resultType = {
   created: string;
   edited: string;
   url: string;
+  imgSrc: string;
+  iconSrc: string;
 };
 
 export type ActionType<T = string> = {

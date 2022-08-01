@@ -2,6 +2,13 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { getStarShip, getStarShipByPage } from 'src/api';
 
+import {
+  ODD_IMG_LINK,
+  EVEN_IMG_LINK,
+  ODD_ICON_LINK,
+  EVEN_ICON_LINK
+} from 'src/constants';
+
 import { setStarShip, fetchStarShip, fetchPage } from './reducer';
 
 import { setLoader } from '../loader';
@@ -9,6 +16,15 @@ import { setAlert } from '../alert';
 import { setMistakeText } from '../mistakeText';
 
 import { starShipType, ActionType } from './types';
+
+const modifyArray = (starShip: starShipType) => {
+  starShip.results = starShip.results.map((item, index) => {
+    if (index % 2) {
+      return { ...item, imgSrc: ODD_IMG_LINK, iconSrc: ODD_ICON_LINK };
+    }
+    return { ...item, imgSrc: EVEN_IMG_LINK, iconSrc: EVEN_ICON_LINK };
+  });
+};
 
 function* setAlertAndLoaderErrorState() {
   yield put(setLoader(false));
@@ -37,6 +53,8 @@ function* fetchSearchStarShipData(fetchStarShip: ActionType<string>) {
       yield put(setMistakeText(true));
     }
 
+    modifyArray(starShip);
+
     yield put(setStarShip(starShip));
     yield put(setLoader(false));
   } catch (error: Error | any) {
@@ -48,16 +66,18 @@ function* fetchSearchStarShipData(fetchStarShip: ActionType<string>) {
 function* fetchStarShipByPage(fetchPage: ActionType<string>) {
   try {
     yield put(setLoader(true));
-    const prevOrNextPageStarShipResult: starShipType = yield call(() =>
+    const starShipByPage: starShipType = yield call(() =>
       getStarShipByPage(fetchPage.payload)
     );
 
-    if (!prevOrNextPageStarShipResult) {
+    if (!starShipByPage) {
       setAlertAndLoaderErrorState();
       return;
     }
 
-    yield put(setStarShip(prevOrNextPageStarShipResult));
+    modifyArray(starShipByPage);
+
+    yield put(setStarShip(starShipByPage));
     yield put(setLoader(false));
   } catch (error: Error | any) {
     setAlertAndLoaderErrorState();
