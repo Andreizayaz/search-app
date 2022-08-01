@@ -2,7 +2,7 @@
   "name": "search-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://andreizayaz.github.io",
+  "homepage": "https://andreizayaz.github.io/search-app/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
     "@testing-library/jest-dom": "^5.14.1",
