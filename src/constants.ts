@@ -2,6 +2,9 @@
 export const HOME_LINK = 'Home';
 export const SEARCH_URL = 'https://swapi.dev/api/starships/?search=';
 
+/* SEARCH CONSTANT */
+export const DELAY = 500;
+
 /* IMAGES AND ICONS LINKS */
 export const ODD_IMG_LINK =
   'https://www.blacksbricks.de/images/product_images/original_images/stardestrrevsl1.jpg';
